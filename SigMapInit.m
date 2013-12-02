@@ -6,7 +6,7 @@
 
 
 function [sigMap, MapSize, rb1Loc, rb2Loc, Pr, x, y, figHandle] = SigMapInit(MapSize)
-    %Robot1, Robot2 randomly assigned in the map 
+    %Robot1(source), Robot2 randomly assigned in the map 
     rb1Loc(1) = (MapSize/2);
     rb1Loc(2) = (MapSize/2);
     rb2Loc = round(rand(1, 2) * MapSize);
@@ -19,10 +19,10 @@ function [sigMap, MapSize, rb1Loc, rb2Loc, Pr, x, y, figHandle] = SigMapInit(Map
       
     %Calculate the RSSI value for the whole map
     
-    
-    for x = 1 :MapSize
+    %MapSize unit 1 cm
+    for x = 1 : MapSize
        for y = 1 :MapSize
-               Pr = RSSI( [x,y], [rb2Loc(1),rb2Loc(2)] );
+               Pr = RSSI2( [x,y], [rb1Loc(1),rb1Loc(2)] );
                sigMap(x, y) = Pr;
        end
     end

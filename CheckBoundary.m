@@ -1,0 +1,7 @@
+%%checkBoundary.m
+%
+%
+%
+%
+
+function [] = CheckBoundary()

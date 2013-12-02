@@ -1,4 +1,4 @@
-%%RSSI path loss model
+%%RSSI path loss model plot
 %   Path loss in free space transimission
 % PL(d) = PL(d_0) + 10 * n * log( d / d_0) + X_sigma
 %Wi-Fi: Pt(dBm) = 7; P_d0(dB) = 40; d_0(m) = 1; n = 2.9;
@@ -8,21 +8,15 @@
 %d:         --The actual distance, 
 %PL:        --Path loss (Watts)
 %n = 3.5    --Experience value
-function Pr = RSSI(loc1, loc2)
+function Pr = RSSIplot(d)
     %Parameters
     d_0 = 1;
     n = 3.5;
     X_sigma = 0;
     P_d0 = 70;
     Pt = 7;
-    %version1 ---Map size is cm, convert it to m 
-    location1 = loc1./100;
-    location2 = loc2./100;
-    
-    %version 2 ---Map size is 1m,
-    %location1 = loc1;
-    %location2 = loc2;
+    d = d./100;  % d is in unit cm needed to be convert to m
     %RSSI Calculation
-    Pl = P_d0 + 10.* n * log(sqrt( (location1(1) - location2(1)).^2 +(location1(2) - location2(2)).^2 )./d_0) + X_sigma;
+    Pl = P_d0 + 10.* n * log(d./d_0) + X_sigma;
     Pr = Pt - Pl;
 end

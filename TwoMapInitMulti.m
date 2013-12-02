@@ -5,20 +5,16 @@
 %
 
 
-function [sigMap, MapSize, rbLocs, RobotNum, figHandle] = SigMapInitMulti(MapSize, RobotNum)
+function [sigMap, phyMap, MapSize, rbLocs, RobotNum, figHandle] = SigMapInitMulti(MapSize, RobotNum)
     %RobotsNum of Robots randomly assigned in the map
     rbLocs = [RobotNum, 2];
     for num = 1 : RobotNum
         rbLocs(num,:) = round(rand(1, 2) * MapSize);
     end      
-    
-    %while(rb2Loc == rb1Loc)
-    %    rb2Loc = round(rand(1, 2) * MapSize);
-    %end
    
     %Initial sigmap and Pass_loss params
-    sigMap = zeros(MapSize,MapSize);
-      
+    sigMap = zeros(MapSize, MapSize);
+    phyMap = zeros(MapSize, MapSize);
     %Calculate the RSSI value for the whole map
     Prtemp = zeros(1, RobotNum);
     Prtotal = 0;
@@ -35,8 +31,8 @@ function [sigMap, MapSize, rbLocs, RobotNum, figHandle] = SigMapInitMulti(MapSiz
     end
     figHandle = figure('Visible', 'on');
     %figure(figHandle);
-    x = 1:MapSize;
-    y = 1:MapSize;
+    x = 1:10:MapSize;
+    y = 1:10:MapSize;
     surf(x, y, sigMap);
 end
 

@@ -10,11 +10,11 @@
 function Pr = RSSI2(loc1, loc2)
     %Parameters
     d_0 = 1;
-    n = 2.9;
+    n = 3.5;
     X_sigma = 0;
     P_d0 = 70;
     Pt = 7;
     %RSSI Calculation
     Pl = P_d0 + 10.* n * log(sqrt( (loc1(1) - loc2(1)).^2 +(loc1(2) - loc2(2)).^2 )./d_0) + X_sigma;
-    Pr = round(Pt - Pl);
+    Pr = Pt - Pl;
 end

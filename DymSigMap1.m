@@ -5,7 +5,8 @@
 %
 
 function [sigMap] = DymSigMap1(sigMap, MapSize, rb1Loc, rb2Loc, figHandle)
-    for i = 1 : 30
+    moverange = MapSize./2;
+    for i = 1 : moverange
         rb2Loc(1) = rb2Loc(1) + 1;
         rb2Loc(2) = rb2Loc(2) + 1;
     
@@ -16,10 +17,11 @@ function [sigMap] = DymSigMap1(sigMap, MapSize, rb1Loc, rb2Loc, figHandle)
                    sigMap(x, y) = Pr;
            end
         end
+               
         figure(figHandle);
         x = [1:MapSize];
         y = [1:MapSize];
         surf(x, y, sigMap);
-        
+        %hold on;
      end   
 end
