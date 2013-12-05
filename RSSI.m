@@ -12,7 +12,8 @@ function Pr = RSSI(loc1, loc2)
     %Parameters
     d_0 = 1;
     n = 3.5;
-    X_sigma = 0;
+    %X_sigma = 0;    %version 1 = 0
+    X_sigma = normrnd(0,37.16);     %sigma = 5.2dB = 37.16dBm
     P_d0 = 70;
     Pt = 7;
     %version1 ---Map size is cm, convert it to m 
